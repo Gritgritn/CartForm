@@ -1,20 +1,38 @@
 import React, { useState } from 'react';
 import './App.css';
-import YandexMap from './Map';
+import InputElement from './Input';
+import styled from 'styled-components'
 
-const ApiKey = "https://api-maps.yandex.ru/2.1/?apikey=5f715ff6-cd1b-4bf2-a920-016e18c54f42&lang=ru_RU";
-const coord = [44.753761, 33.775442];
+const P = styled.p`
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 120%;
+  font-feature-settings: 'tnum' on, 'lnum' on;
+  color: #000000;
+`
+
+const A = styled.a`
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 18px;
+    text-decoration-line: underline;
+    font-feature-settings: 'tnum' on, 'lnum' on;
+    color: #9F9F9F;
+`
+
 const aDress = "Долинное, ул. Фонтанная 5";
 
 function App() {
-  const [ adress, setBaba ] = useState(aDress);
-
 
   return (
     <div className="App">
-      <YandexMap coord={coord} adress={adress}/>
-      <button onClick={() => setBaba("Симферополь, балаклавская")}>Поменять</button>
-      <p>{adress}</p>
+       <h1>Корзина</h1>
+       <P>Есть аккаунт? <A>Войти</A></P>
+       <InputElement type="text" name="name"></InputElement>
     </div>
   );
 }
