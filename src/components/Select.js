@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const SelectWrapper = styled.div`
@@ -56,10 +56,13 @@ const SelectArrow = styled.div`
     }
 `
 
-const SelectElement = () => {
+const SelectElement = ({onSelectChange}) => {
+    const setRed = (target) => {
+        target.classList.add("Red");
+    }
   return (
     <SelectWrapper>
-        <SelectContainer defaultValue={""} onClick={(e) => console.log(e.target.value)}>
+        <SelectContainer onInvalid={(evt) => setRed(evt.currentTarget)} defaultValue={""} onClick={(e) => onSelectChange(e.target.value)} required>
             <option value="" disabled hidden>Тип упаковки</option>
             <option value="without-pack">Без упаковки</option>
             <option value="standart-pack">Стандартная</option>

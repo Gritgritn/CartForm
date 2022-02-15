@@ -1,3 +1,8 @@
-.App {
-  text-align: center;
+.Red:invalid {
+  color: #c50000;
+  border-bottom: 1px solid #c50000;
+}
+
+.Red::placeholder{
+  color: #c50000;
 }
