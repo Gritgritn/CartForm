@@ -60,15 +60,6 @@ const YandexMap = ({adress, getMapData}) => {
         zoom: 8
     };
 
-    const getCoords = () => {
-      if (adress !== '') {
-        window.ymaps.geocode(adress).then(res => {
-            let firstGeoObject = res.geoObjects.get(0);
-            setcoordinate(firstGeoObject.geometry.getCoordinates());
-        })
-      }
-    };
-
     const getAdress = e => {
         window.ymaps.geocode(e.get('coords')).then(res => {
             let firstGeoObject = res.geoObjects.get(0);
@@ -82,7 +73,12 @@ const YandexMap = ({adress, getMapData}) => {
     useEffect(() => {
     count=count+1;
     if (count > 1) {
-        getCoords();
+        if (adress !== '') {
+          window.ymaps.geocode(adress).then(res => {
+              let firstGeoObject = res.geoObjects.get(0);
+              setcoordinate(firstGeoObject.geometry.getCoordinates());
+          })
+        }
     }
     }, [adress]);
 
